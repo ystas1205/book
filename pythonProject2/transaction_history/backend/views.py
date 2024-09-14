@@ -44,7 +44,7 @@ class ImportProduct(APIView):
             return JsonResponse(
                 {'Status': 'Ok- файл был обработан без ошибок'})
 
-    @method_decorator(cache_page(60 * 60 * 2))
+   
     def get(self, request, *args, **kwargs):
 
         queryset = TransactionHistory.objects.order_by('-total')

@@ -15,7 +15,7 @@ from django.contrib.auth.models import User
 from ujson import loads as load_json
 from backend.models import Order, Contact, Shop, Book
 from django.contrib.auth import get_user_model
-User = get_user_model()
+User = get_user_model() 
 
 
 class RegisterUser(APIView):

@@ -1,0 +1,17 @@
+<form action="{% url 'backend:book' %}" method="post">
+    {% csrf_token %}
+    <h2>Добавление книги</h2>
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title">
+    <br>
+    <label for="author">Автор:</label>
+    <input type="text" id="author" name="author">
+    <br>
+    <label for="year_of_publication">Год издания:</label>
+    <input type="date" id="year_of_publication" name="year_of_publication">
+    <br>
+    <label for="ISBN">ISBN:</label>
+    <input type="text" id="ISBN" name="ISBN">
+    <br>
+    <button type="submit">Добавить книгу</button>
+</form>
