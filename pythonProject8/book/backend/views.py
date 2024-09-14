@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 
 from backend.serializers import BookSerializer, UserSerializer
 
-from backend.models import Book
+from backend.models import Book,User
 
 
 # Create your views here.
@@ -105,3 +105,18 @@ class RegisterUser(APIView):
         return JsonResponse(
             {'Status': 'Не указаны все необходимые аргументы'},
             status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request,pk = None, *args, **kwargs):
+        if pk is None:
+            users = User.objects.all()
+
+            serializer = UserSerializer(users, many=True)
+            return Response(serializer.data)
+        else:
+            try:
+                user = User.objects.get(id=pk)
+            except Book.DoesNotExist:
+                return JsonResponse({'error': 'Данной книги нет'},
+                                    status=404)
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
